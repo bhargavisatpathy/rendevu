@@ -34,3 +34,35 @@
 .cancel:hover {
   color: rgb(191, 63, 63)
 }
+
+.orline_container {
+  padding: 0 20px;
+}
+
+.orline_container .orline_divider {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  margin-top: 18px;
+  border-top: 1px solid #ccc;
+}
+
+.orline_container .orline {
+  border: 0;
+  color: black;
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  /*background: #fff;*/
+  text-transform: uppercase;
+}
+
+.orline {
+  background: #f9f8f7;
+  border: 1px solid #efeeed;
+  width: 26px;
+  display: block;
+  margin: -13px auto 0;
+  text-align: center;
+  height: 26px;
+}

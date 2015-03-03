@@ -18,6 +18,8 @@ gem 'twitter-bootstrap-rails'
 gem 'bootstrap_form', '~> 2.2.0'
 gem 'therubyracer'
 gem 'font-awesome-sass'
+gem 'omniauth-facebook'
+gem 'figaro'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

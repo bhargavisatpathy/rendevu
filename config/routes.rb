@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  get  "/auth/facebook/callback", to: "sessions#create"
+
   root to: "static_pages#index"
   # get "*rest" => "static_pages#not_found"
   get "think" => "static_pages#think"
   get "plan" => "static_pages#plan"
   get "/signin"  => "sessions#new"
-  post "/signin"  => "sessions#create"
+  #post "/signin"  => "sessions#create"
   delete "/signout" => "sessions#destroy"
   get "/signup" => "sessions#new_account"
 

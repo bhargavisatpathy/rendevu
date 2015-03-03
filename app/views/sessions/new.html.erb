@@ -5,8 +5,17 @@
   <%= f.email_field :email %>
   <%= f.password_field :password %>
   <div class="create_account" >
-  <%= f.submit "Log in" %>
-  <% end %>
-  <p> Don't have an account? Create one <%= link_to "here", signup_path, method: :get %>! </p>
+    <%= f.submit "Log in" %>
+    <p> Don't have an account? Create one <%= link_to "here", signup_path, method: :get %>! </p>
+
+    <div class="orline_container">
+      <div class="orline_divider"></div>
+      <span class="orline">or</span>
+      <!-- <a class="btn btn-block btn-social btn-facebook">
+      <i class="fa fa-facebook"></i> -->
+      <%= link_to "Sign in with Facebook", "/auth/facebook", class: "btn btn-block btn btn-lg btn-dark btn-social btn-facebook" %>
+    </a>
+    </div>
   </div>
+  <% end %>
 </div>
