@@ -13,10 +13,11 @@ html, body {
 }
 
 body {
-  background-image: url('main1.jpg');
+  background: url(/assets/main1.jpg) no-repeat center center fixed;
+  /*background-image: url('/assets/main1.jpg');
   background-repeat: no-repeat;
   background-position: center center;
-  background-attachment: fixed;
+  background-attachment: fixed;*/
   background-size: cover;
   height: 100%;
   width: 100%;
