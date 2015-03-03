@@ -14,16 +14,10 @@ html, body {
 
 body {
   background: url(/assets/main1.jpg) no-repeat center center fixed;
-  /*background-image: url('/assets/main1.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-attachment: fixed;*/
   background-size: cover;
   height: 100%;
   width: 100%;
   font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 .text-vertical-center {
