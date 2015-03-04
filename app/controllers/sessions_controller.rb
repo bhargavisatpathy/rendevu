@@ -2,9 +2,6 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def new_account
-  end
-
   def create
     user = facebook_user || rendevu_user
 
