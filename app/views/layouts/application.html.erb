@@ -9,13 +9,8 @@
 <body>
 
   <%= render partial: "shared/nav_bar" %>
-
   <div id="errors">
-    <% flash.each do |name, message| %>
-      <div class="<%= bootstrap_class_for(name) %>">
-        <p><%= (message).html_safe %></p>
-      </div>
-    <% end %>
+    <%= render partial: "layouts/flash" %>
   </div>
 
   <%= yield %>

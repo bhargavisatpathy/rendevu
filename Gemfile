@@ -20,6 +20,7 @@ gem 'therubyracer'
 gem 'font-awesome-sass'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
