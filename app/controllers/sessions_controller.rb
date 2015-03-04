@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = find_and_authenticate_user
+    user = facebook_user || rendevu_user
 
     if user
       session[:user_id] = user.id
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session.clear
     flash[:success] = "Successfully logged out"
     redirect_to root_path
   end
@@ -30,7 +30,16 @@ class SessionsController < ApplicationController
     request.env['omniauth.auth']
   end
 
-  def find_and_authenticate_user
-    User.find_by(email: params[:session][:email]).authenticate(params[:session][:password]) || User.find_or_create_from_auth(auth)
+  def rendevu_user
+    if params[:session]
+      user = User.find_by(email: params[:session][:email])
+      user && user.authenticate(params[:session][:password]) ? user : false
+    end
+  end
+
+  def facebook_user
+    if auth
+      User.find_or_create_from_auth(auth)
+    end
   end
 end
