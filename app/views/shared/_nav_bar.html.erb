@@ -13,14 +13,26 @@
             <a href="#about">About</a>
         </li>
         <li>
+            <a href="/think">Think</a>
+        </li>
+        <li>
+            <a href="/plan">Plan</a>
+        </li>
+        <li>
+            <a href="/hangout">Hangout</a>
+        </li>
+        <% if !current_user %>
+        <li>
             <a href="/signin">Sign In</a>
         </li>
+        <% else current_user %>
         <li>
             <a href="/signin">My Account</a>
         </li>
         <li>
-            <a href="#contact">Contact</a>
+            <%= link_to "Sign Out", signout_path, method: :delete %>
         </li>
+        <% end %>
     </ul>
 </nav>
 

@@ -1,21 +1,27 @@
-<div class="login-form">
-  <%= link_to "X", root_path, class: "cancel" %>
-  <h1> Sign into your account </h1>
-  <%= bootstrap_form_for(:session, :url => {:controller => "sessions", :action => "create"} ) do |f| %>
-  <%= f.email_field :email %>
-  <%= f.password_field :password %>
-  <div class="create_account" >
-    <%= f.submit "Log in" %>
-    <p> Don't have an account? Create one <%= link_to "here", signup_path, method: :get %>! </p>
+<% if current_user %>
+  Welcome <strong><%= current_user.first_name %></strong>!
+  <%= link_to "sign out", signout_path, method: :delete, class: "hyper_links" %>
+<% else %>
+  <div class="login-form">
+    <%= link_to "X", root_path, class: "cancel" %>
+    <h1> Sign into your account </h1>
+    <%= bootstrap_form_for(:session, :url => {:controller => "sessions", :action => "create"} ) do |f| %>
+    <%= f.email_field :email %>
+    <%= f.password_field :password %>
+    <div class="create_account" >
+      <%= f.submit "Log in" %>
+      <p> Don't have an account? Create one <%= link_to "here", signup_path, method: :get %>! </p>
 
-    <div class="orline_container">
-      <div class="orline_divider"></div>
-      <span class="orline">or</span>
-      <!-- <a class="btn btn-block btn-social btn-facebook">
-      <i class="fa fa-facebook"></i> -->
-      <%= link_to "Sign in with Facebook", "/auth/facebook", class: "btn btn-block btn btn-lg btn-dark btn-social btn-facebook" %>
-    </a>
+      <div class="orline_container">
+        <div class="orline_divider"></div>
+        <span class="orline">or</span>
+        <!-- <a class="btn btn-block btn-social btn-facebook">
+          <i class="fa fa-facebook"></i> Sign in with facebook
+        </a> -->
+        <br>
+          <%= link_to "  Sign in with Facebook", "/auth/facebook", class: "fa fa-facebook btn btn-social btn-facebook" %>
+      </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
+<% end %>

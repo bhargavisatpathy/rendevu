@@ -7,35 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '804265119668454',
-      xfbml      : true,
-      version    : 'v2.2'
-    });
-
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        console.log('Logged in.');
-      }
-      else {
-        FB.login(function(){ FB.api('/me/feed', 'post', {message: 'Hello, world!'});
-        }, {scope: 'publish_actions'});
-      }
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-  </script>
 
   <%= render partial: "shared/nav_bar" %>
+
+  <div id="errors">
+    <% flash.each do |name, message| %>
+      <div class="<%= bootstrap_class_for(name) %>">
+        <p><%= (message).html_safe %></p>
+      </div>
+    <% end %>
+  </div>
 
   <%= yield %>
 

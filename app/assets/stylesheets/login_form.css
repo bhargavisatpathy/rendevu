@@ -53,16 +53,26 @@
   position: relative;
   z-index: 1;
   font-weight: 700;
-  /*background: #fff;*/
   text-transform: uppercase;
 }
 
 .orline {
-  background: #f9f8f7;
+  background: transparent;
+  /*background: #f9f8f7;*/
   border: 1px solid #efeeed;
   width: 26px;
   display: block;
   margin: -13px auto 0;
   text-align: center;
   height: 26px;
+}
+
+.btn-facebook {
+  border-radius: 0;
+  color: #3B5998;
+  background-color: rgb(255,255,255);
+}
+
+.hyper_links {
+  color: #3B5998;
 }
