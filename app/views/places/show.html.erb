@@ -1,0 +1,22 @@
+<div class="category-name"><%= @category.name %></div>
+<%= link_to "Back", places_path, class: "back-btn" %>
+</div><%@places.each do |place| %>
+  <div class="place-by-category">
+    <div class="col-sm-4">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3><%= place.name %></h3></div>
+        <div class="panel-body">
+          <% if place.category_id == 1 %>
+            <img src="/assets/restaurant.jpg" class="img-responsive"></div>
+          <% elsif place.category_id == 2 %>
+            <img src="/assets/greenpark1.jpg" class="img-responsive"></div>
+          <% elsif place.category_id == 3 %>
+            <img src="/assets/bellydance.jpg" class="img-responsive"></div>
+          <% else %>
+            <img src="/assets/friends.jpg" class="img-responsive"></div>
+          <% end %>
+          <div class="panel-footer"><%= place.address %></div>
+        </div>
+      </div>
+    </div>
+<% end %>

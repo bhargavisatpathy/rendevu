@@ -1,7 +1,20 @@
+<div>
+  <%= menu_group do %>
+    <%= drop_down "Search by" do %>
+      <%= menu_item "Restaurants", place_path(1) %>
+      <%= menu_item "Parks", place_path(2) %>
+      <%= menu_item "Events", place_path(3) %>
+
+      <% if current_user %>
+        <%= menu_item "Your places", places_path(4)  %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
 <% @categories.each do |category| %>
 <section>
   <div class="category-name"><%= category.name %></div>
-  <hr>
   <% if category.name == "Restaurants" %>
     <% category.places.each do |place| %>
       <div class="col-sm-4">
