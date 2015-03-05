@@ -4,13 +4,14 @@ Rails.application.routes.draw do
 
   root to: "static_pages#index"
   # get "*rest" => "static_pages#not_found"
-  get "think" => "static_pages#think"
   get "plan" => "static_pages#plan"
   get "/signin"  => "sessions#new"
   post "/signin"  => "sessions#create"
   delete "/signout" => "sessions#destroy"
   get "/signup" => "users#new"
   post "/signup" => "users#create"
+
+  resources :places
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

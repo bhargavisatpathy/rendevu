@@ -21,6 +21,7 @@ gem 'font-awesome-sass'
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'bcrypt', '~> 3.1.7'
+gem 'materialize-sass'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
