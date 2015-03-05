@@ -26,7 +26,10 @@ class Seed
       { name: "Chipotle", address: "Parker, CO", category_id: categories[0].id},
       { name: "Egg and I", address: "Parker, CO", category_id: categories[0].id},
       { name: "Salisbury Park", address: "Parker, CO", category_id: categories[1].id},
+      { name: "O'Brien Park", address: "Parker, CO", category_id: categories[1].id},
+      { name: "Six Flags", address: "Denver, CO", category_id: categories[1].id},
       { name: "Belly dance show", address: "Denver, CO", category_id: categories[2].id},
+      { name: "Kids Ballet show", address: "Aurora, CO", category_id: categories[2].id},
       { name: "Big Hero 6", address: "Parker, CO", category_id: categories[2].id}
     ])
   end
