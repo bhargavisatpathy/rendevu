@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:success] = "Welcome #{user.first_name}"
-      redirect_to think_path
+      redirect_to places_path
     else
       flash[:errors] = "Email and/or password did not match"
       redirect_to root_path
