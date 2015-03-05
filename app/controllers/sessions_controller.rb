@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome #{user.first_name}"
       redirect_to think_path
     else
-      flash[:errors] = "You are not logged in"
+      flash[:errors] = "Email and/or password did not match"
       redirect_to root_path
     end
   end
