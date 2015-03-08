@@ -1,8 +1,10 @@
 class SessionsController < ApplicationController
   def new
-  end
-
-  def new_account
+    if params[:forward_to]
+      session[:forward_to] = params[:forward_to]
+    else
+      session[:return_to] ||= request.referer
+    end
   end
 
   def create
@@ -11,7 +13,7 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:success] = "Welcome #{user.first_name}"
-      redirect_to places_path
+      session[:forward_to] ? redirect_forward : redirect_after_login
     else
       flash[:errors] = "Email and/or password did not match"
       redirect_to root_path

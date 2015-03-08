@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :invitaions
+  
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
@@ -6,6 +8,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, length: { maximum: 255 },
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+
 
   has_secure_password
 
