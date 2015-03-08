@@ -14,6 +14,10 @@ Rails.application.routes.draw do
   resources :places
   resources :invitations
 
+  post 'twilio/voice' => 'twilio#voice'
+  post 'notifications/notify' => 'notifications#notify'
+  post 'twilio/status' => 'twilio#status'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

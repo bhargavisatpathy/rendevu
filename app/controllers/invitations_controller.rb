@@ -17,6 +17,7 @@ class InvitationsController < ApplicationController
     @invitation = Invitation.new(invitation_params)
     @invitation.user = current_user
     if @invitation.save
+      notify(@invitation.name)
       flash[:success] = "You've created a new invitation"
       redirect_to invitations_path
     else
@@ -48,5 +49,11 @@ class InvitationsController < ApplicationController
 
   def invitation_params
     params.require(:invitation).permit(:name)
+  end
+
+  def notify(name)
+    client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
+    message = client.messages.create from: '7206135838', to: '7205300432', body: "You are invited to join #{name}"#, status_callback: request.base_url + '/twilio/status'
+    #render plain: message.status
   end
 end
