@@ -21,8 +21,8 @@ class ApplicationController < ActionController::Base
   def redirect_forward
     path = session[:forward_to]
     session[:forward_to] = nil
-    if path == "new_invitation_path"
-      redirect_to new_invitation_path
+    if path == "invitations_path"
+      redirect_to invitations_path
     # elsif path == "invitaion"
     #   redirect_to seller_store_path(current_user.slug)
     # elsif path == "seller_dashboard"

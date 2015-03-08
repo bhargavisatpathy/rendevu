@@ -1,9 +1,5 @@
   <div class="invitation-form">
     <%= link_to "X", invitations_path, class: "cancel" %>
-    <h1>Create an invitaion</h1>
-    <%= bootstrap_form_for(:invitation, :url => {:controller => 'invitations', :action => 'create'}) do |f| %>
-      <%= f.text_field :name %>
-      <%= link_to "select places", places_path %>
-      <%= f.submit "Submit", class: "btn btn-success" %>
-    <% end %>
+    <h1>Create Plan</h1>
+    <%= render "form" %>
   </div>
