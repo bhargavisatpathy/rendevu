@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308065619) do
+ActiveRecord::Schema.define(version: 20150309185603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,17 @@ ActiveRecord::Schema.define(version: 20150308065619) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "plans", force: :cascade do |t|
+  create_table "friends", force: :cascade do |t|
+    t.string   "name"
+    t.string   "phone_number"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "friends", ["user_id"], name: "index_friends_on_user_id", using: :btree
+
+  create_table "invitations", force: :cascade do |t|
     t.string   "name"
     t.string   "status",     default: "open"
     t.integer  "user_id"
@@ -31,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150308065619) do
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "plans", ["user_id"], name: "index_plans_on_user_id", using: :btree
+  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id", using: :btree
 
   create_table "places", force: :cascade do |t|
     t.string   "name"
@@ -42,6 +52,16 @@ ActiveRecord::Schema.define(version: 20150308065619) do
   end
 
   add_index "places", ["category_id"], name: "index_places_on_category_id", using: :btree
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.string   "status",     default: "open"
+    t.integer  "user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "plans", ["user_id"], name: "index_plans_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -57,6 +77,7 @@ ActiveRecord::Schema.define(version: 20150308065619) do
     t.string   "password_digest"
   end
 
-  add_foreign_key "plans", "users"
+  add_foreign_key "friends", "users"
   add_foreign_key "places", "categories"
+  add_foreign_key "plans", "users"
 end

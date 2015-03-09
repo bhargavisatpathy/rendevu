@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :plans
+  has_many :friends
 
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 }
