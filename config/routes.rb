@@ -4,7 +4,6 @@ Rails.application.routes.draw do
 
   root to: "static_pages#index"
   # get "*rest" => "static_pages#not_found"
-  get "plan" => "static_pages#plan"
   get "/signin"  => "sessions#new"
   post "/signin"  => "sessions#create"
   delete "/signout" => "sessions#destroy"
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
   post "/signup" => "users#create"
 
   resources :places
-  resources :invitations
+  resources :plans
 
   post 'twilio/voice' => 'twilio#voice'
   post 'notifications/notify' => 'notifications#notify'
