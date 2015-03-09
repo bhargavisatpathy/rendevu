@@ -7,23 +7,20 @@
             <a href="#top">Rendevu</a>
         </li>
         <li>
-            <a href="/">Home</a>
+          <%= link_to "Home", root_path %>
         </li>
         <li>
-            <a href="#about">About</a>
+          <%= link_to "Think", places_path %>
         </li>
         <li>
-            <a href="/places">Think</a>
-        </li>
-        <li>
-            <a href="/plan">Plan</a>
+          <%= link_to "Plan", invitations_path %>
         </li>
         <li>
             <a href="/hangout">Hangout</a>
         </li>
         <% if !current_user %>
         <li>
-            <a href="/signin">Sign In</a>
+          <%= link_to "Sign In", signin_path %>
         </li>
         <% else %>
         <li>

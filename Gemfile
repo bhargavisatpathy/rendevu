@@ -22,7 +22,7 @@ gem 'omniauth-facebook'
 gem 'figaro'
 gem 'bcrypt', '~> 3.1.7'
 gem 'materialize-sass'
-
+gem 'twilio-ruby', '~> 3.12'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

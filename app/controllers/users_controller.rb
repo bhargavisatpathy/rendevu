@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
   def new
+    if params[:forward_to]
+      session[:forward_to] = params[:forward_to]
+    else
+      session[:return_to] ||= request.referer
+    end
+    @user = User.new
   end
 
   def create
