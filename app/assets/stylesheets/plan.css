@@ -1,4 +1,4 @@
-.invitation-form {
+.plan-form {
   background: rgba(224, 224, 224, 0.7);
   opacity: 0.9;
   margin-top: 100px;
@@ -14,9 +14,20 @@
 }
 
 .generic-table {
-  background-color: white;
+  background: white;
+  margin-top: 100px;
+  width: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  font-size: 15px;
 }
 
 h3{
   color: white;
+  alignment: center;
 }

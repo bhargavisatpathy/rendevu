@@ -6,6 +6,4 @@ class StaticPagesController < ApplicationController
   def index
   end
 
-  def think
-  end
 end

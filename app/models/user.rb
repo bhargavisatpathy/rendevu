@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :invitations
+  has_many :plans
 
   before_save { self.email = email.downcase }
   validates :first_name, presence: true, length: { maximum: 50 }

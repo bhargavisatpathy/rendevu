@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20150308065619) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "invitations", force: :cascade do |t|
+  create_table "plans", force: :cascade do |t|
     t.string   "name"
     t.string   "status",     default: "open"
     t.integer  "user_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20150308065619) do
     t.datetime "updated_at",                  null: false
   end
 
-  add_index "invitations", ["user_id"], name: "index_invitations_on_user_id", using: :btree
+  add_index "plans", ["user_id"], name: "index_plans_on_user_id", using: :btree
 
   create_table "places", force: :cascade do |t|
     t.string   "name"
@@ -57,6 +57,6 @@ ActiveRecord::Schema.define(version: 20150308065619) do
     t.string   "password_digest"
   end
 
-  add_foreign_key "invitations", "users"
+  add_foreign_key "plans", "users"
   add_foreign_key "places", "categories"
 end

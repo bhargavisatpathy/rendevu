@@ -1,0 +1,28 @@
+<div class="heading_name">
+  <h1 class = "heading-name">My Plans</h1>
+  <div class="col-md-4 pull-right top-button">
+    <%= link_to "Create Plan", new_plan_path, class: "btn btn-default" %>
+  </div>
+</div>
+<% if @plans.nil? || @plans.empty? %>
+  <h3>You have not created any plans yet!</h3>
+<% else %>
+  <table class="table table-hover generic-table">
+    <thead>
+      <th>Name</th>
+      <th>Status</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @plans.each do |plan| %>
+        <tr>
+          <td><%= plan.name %></td>
+          <td><%= plan.status %></td>
+
+          <td><%= link_to "Edit", edit_plan_path(plan), class: "btn btn-default" %></td>
+          <td><%= link_to "Delete", plan_path(plan), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default"  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
