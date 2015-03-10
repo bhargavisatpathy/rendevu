@@ -21,7 +21,7 @@ class PlansController < ApplicationController
       notify_friends
       redirect_to plans_path
     else
-      redirect_to new_plan_path
+      render :new
     end
   end
 
@@ -35,8 +35,7 @@ class PlansController < ApplicationController
     if @plan.save
       redirect_to plans_path
     else
-      flash[:errors] = @plan.errors.full_messages.uniq.join("<br>")
-      redirect_to edit_plan_path
+      render :edit
     end
   end
 

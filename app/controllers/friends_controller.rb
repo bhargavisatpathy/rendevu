@@ -15,7 +15,7 @@ class FriendsController < ApplicationController
       flash[:success] = "You've add a friend to you friend list"
       redirect_to friends_path
     else
-      redirect_to new_friend_path
+      render :new
     end
   end
 
@@ -29,8 +29,7 @@ class FriendsController < ApplicationController
     if @friend.save
       redirect_to friends_path
     else
-      flash[:errors] = @friend.errors.full_messages.uniq.join("<br>")
-      redirect_to edit_friend_path
+      render :edit
     end
   end
 
