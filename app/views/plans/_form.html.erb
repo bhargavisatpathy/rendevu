@@ -1,5 +1,8 @@
 <%= bootstrap_form_for(@plan)  do |f| %>
   <%= f.text_field :name %>
-  <%= link_to "select places", places_path %>
+  <%= f.select(:friends, current_user.friends.collect { |friend| [friend.name, friend.id] },
+                                                      { :prompt => "Please select"},
+                                                      { :multiple => true, :size => 3 }
+              ) %>
   <%= f.submit "Submit", class: "btn btn-success" %>
 <% end %>

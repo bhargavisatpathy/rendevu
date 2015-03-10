@@ -1,16 +1,20 @@
-<div>
-<h1 class="heading-name">Venue</h1>
-  <%= menu_group do %>
-    <%= drop_down "Category" do %>
-      <%= menu_item "Restaurants", place_path(1) %>
-      <%= menu_item "Parks", place_path(2) %>
-      <%= menu_item "Events", place_path(3) %>
+<div id="venue-header">
+  <div id="heading-name">
+    <h1 class="heading-name">Venue</h1>
+  </div>
+  <div id="venue-category">
+    <%= menu_group do %>
+      <%= drop_down "Category" do %>
+        <%= menu_item "Restaurants", place_path(1) %>
+        <%= menu_item "Parks", place_path(2) %>
+        <%= menu_item "Events", place_path(3) %>
 
-      <% if current_user %>
-        <%= menu_item "Your places", places_path(4)  %>
+        <% if current_user %>
+          <%= menu_item "Your places", places_path(4)  %>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 <br>
 <% @categories.each do |category| %>

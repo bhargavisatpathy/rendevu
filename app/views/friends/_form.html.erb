@@ -1,0 +1,5 @@
+<%= bootstrap_form_for(@friend)  do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :phone_number %>
+  <%= f.submit "Submit", class: "btn btn-success" %>
+<% end %>

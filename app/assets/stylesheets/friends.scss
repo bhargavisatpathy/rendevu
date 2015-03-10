@@ -1,3 +1,23 @@
 // Place all the styles related to the friends controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#friends-header {
+  width: 100%;
+  height: 60px;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.friend-form {
+  background: rgba(224, 224, 224, 0.7);
+  opacity: 0.9;
+  margin-top: 100px;
+  width: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 6px;
+  font-size: 15px;
+}
