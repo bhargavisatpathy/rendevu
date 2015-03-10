@@ -15,10 +15,10 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
+    @plan.add_friends(params[:plan][:friends])
     @plan.user = current_user
     if @plan.save
-      notify(@plan.name)
-      flash[:success] = "You've created a new plan"
+      notify_friends
       redirect_to plans_path
     else
       redirect_to new_plan_path
@@ -51,9 +51,10 @@ class PlansController < ApplicationController
     params.require(:plan).permit(:name)
   end
 
-  def notify(name)
-    client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-    message = client.messages.create from: '7206135838', to: '7205300432', body: "You are invited to join #{name}"#, status_callback: request.base_url + '/twilio/status'
-    #render plain: message.status
+  def notify_friends
+    @plan.invitations.each do |invitation|
+      send_sms(invitation.friend.phone_number, "You are invited to vote on #{@plan.name}")
+    end
   end
+
 end

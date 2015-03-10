@@ -1,9 +1,13 @@
-<h1 class = "heading-name">My Plans</h1>
+<div id="plan-header">
+  <div id="heading-name">
+    <h1 class="heading-name">My Plans</h1>
+  </div>
+</div>
 <div class="col-md-4 pull-right">
   <br><br>
   <%= link_to "Create Plan", new_plan_path, class: "btn btn-default" %>
 </div>
-<% if @plans.nil? || @plans.empty? %>
+<% if @plans.empty? %>
   <h4>You have not created any plans yet!</h4>
 <% else %>
   <table class="table table-hover generic-table">

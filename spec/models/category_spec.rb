@@ -19,5 +19,6 @@ describe Category, { type: "model" } do
     place1 = Place.create(name: "Qdoba", address: "Denver, CO", category_id: category.id)
     place2 = Place.create(name: "Chipotle", address: "Parker, CO", category_id: category.id)
     expect(category.places.count).to equal 2
+    expect(category.places[0].name).to eq("Qdoba")
   end
 end

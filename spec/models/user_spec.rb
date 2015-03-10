@@ -37,4 +37,20 @@ describe User, { type: "model" } do
                            email: "siya@email.com", password: "password")
     expect(new_user).not_to be_valid
   end
+
+  it "can have one or more plans" do
+    user
+    plan1 = Plan.create(name: "Birthday Party", user_id: user.id)
+    plan2 = Plan.create(name: "Pool Party", user_id: user.id)
+    expect(user.plans.count).to eq(2)
+    expect(user.plans[0].name).to eq("Birthday Party")
+  end
+
+  it "can have one or more friends" do
+    user
+    friend1 = Friend.create(name: "Nina", phone_number: "2223334444", user_id: user.id)
+    friend2 = Friend.create(name: "Arya", phone_number: "1113335555", user_id: user.id)
+    expect(user.friends.count).to eq(2)
+    expect(user.friends[0].name).to eq("Nina")
+  end
 end

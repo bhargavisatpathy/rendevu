@@ -1,4 +1,8 @@
-<h1 class="heading-name"><%= @category.name %></h1>
+<div id="venue-header">
+  <div id="heading-name">
+    <h1 class="heading-name"><%= @category.name %></h1>
+  </div>
+</div>
 <br><br>
 <%@places.each do |place| %>
   <div class="col-sm-4">
@@ -14,8 +18,8 @@
         <% else %>
           <img src="/assets/friends.jpg" class="img-responsive"></div>
         <% end %>
-      </div>
       <div class="panel-footer"><%= place.address %></div>
+      </div>
     </div>
   </div>
 <% end %>

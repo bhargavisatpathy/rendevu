@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :places
   resources :plans
+  resources :friends
 
   post 'twilio/voice' => 'twilio#voice'
   post 'notifications/notify' => 'notifications#notify'
