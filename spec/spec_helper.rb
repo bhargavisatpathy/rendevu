@@ -11,4 +11,12 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.include Rails.application.routes.url_helpers
+
+  config.color = true
+
+  config.tty = true
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  end
 end
