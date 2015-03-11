@@ -10,11 +10,12 @@
 
   <%= render partial: "shared/nav_bar" %>
 
+
   <%= yield %>
 
-  <div id="errors">
-    <%= render partial: "layouts/flash" %>
-  </div>
+  <%= render partial: "layouts/flash" %>
+
+
   <%= render partial: "shared/footer" %>
 
 </body>

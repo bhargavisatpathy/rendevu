@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150310032309) do
+ActiveRecord::Schema.define(version: 20150311043028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(version: 20150310032309) do
 
   add_index "invitations", ["friend_id"], name: "index_invitations_on_friend_id", using: :btree
   add_index "invitations", ["plan_id"], name: "index_invitations_on_plan_id", using: :btree
+
+  create_table "options", force: :cascade do |t|
+    t.datetime "time"
+    t.integer  "rank"
+    t.integer  "place_id"
+    t.integer  "plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "options", ["place_id"], name: "index_options_on_place_id", using: :btree
+  add_index "options", ["plan_id"], name: "index_options_on_plan_id", using: :btree
 
   create_table "places", force: :cascade do |t|
     t.string   "name"
@@ -81,6 +93,8 @@ ActiveRecord::Schema.define(version: 20150310032309) do
   add_foreign_key "friends", "users"
   add_foreign_key "invitations", "friends"
   add_foreign_key "invitations", "plans"
+  add_foreign_key "options", "places"
+  add_foreign_key "options", "plans"
   add_foreign_key "places", "categories"
   add_foreign_key "plans", "users"
 end

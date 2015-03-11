@@ -1,6 +1,6 @@
 <div id="venue-header">
   <div id="heading-name">
-    <h1 class="heading-name">Venue</h1>
+    <h1 class="heading-name">Venue <span class="badge"><%= @cart.count %></h1>
   </div>
   <div id="venue-category">
     <%= menu_group do %>
@@ -8,10 +8,6 @@
         <%= menu_item "Restaurants", place_path(1) %>
         <%= menu_item "Parks", place_path(2) %>
         <%= menu_item "Events", place_path(3) %>
-
-        <% if current_user %>
-          <%= menu_item "Your places", places_path(4)  %>
-        <% end %>
       <% end %>
     <% end %>
   </div>
@@ -24,7 +20,7 @@
     <% category.places.each do |place| %>
       <div class="col-sm-4">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3><%= place.name %></h3></div>
+          <%= render partial: "shared/cart_items", locals: { place: place } %>
           <div class="panel-body"><img src="/assets/restaurant.jpg" class="img-responsive"></div>
           <div class="panel-footer"><%= place.address %></div>
         </div>
@@ -34,7 +30,7 @@
     <% category.places.each do |place| %>
       <div class="col-sm-4">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3><%= place.name %></h3></div>
+          <%= render partial: "shared/cart_items" %>
           <div class="panel-body"><img src="/assets/greenpark1.jpg" class="img-responsive"></div>
           <div class="panel-footer"><%= place.address %></div>
         </div>
@@ -44,7 +40,7 @@
     <% category.places.each do |place| %>
       <div class="col-sm-4">
         <div class="panel panel-default">
-          <div class="panel-heading"><h3><%= place.name %></h3></div>
+          <%= render partial: "shared/cart_items" %>
           <div class="panel-body"><img src="/assets/bellydance.jpg" class="img-responsive"></div>
           <div class="panel-footer"><%= place.address %></div>
         </div>

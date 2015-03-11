@@ -1,0 +1,9 @@
+<div class="panel-heading">
+  <h3>
+    <% if @cart.contains? "#{place.id}" %>
+      <%= link_to(content_tag(:i, nil, class: "fa fa-check-square fa-lg btn-success"), deselect_place_path(item_id: place.id)) %>&nbsp;<%= place.name %>
+    <% else %>
+      <%= link_to(content_tag(:i, nil, class: "fa fa-check-square fa-lg btn-default"), select_place_path(item_id: place.id)) %>&nbsp;<%= place.name %>
+    <% end %>
+  </h3>
+</div>

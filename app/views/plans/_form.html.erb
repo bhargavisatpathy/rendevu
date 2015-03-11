@@ -4,5 +4,10 @@
                                                       { :prompt => "Please select"},
                                                       { :multiple => true, :size => 3 }
               ) %>
+  <%= f.select(:places, @places.collect { |place| [place.name, place.id] },
+                                                      { :prompt => "Please select"},
+                                                      { :multiple => true, :size => 3 }
+              ) %>
+
   <%= f.submit "Submit", class: "btn btn-success" %>
 <% end %>

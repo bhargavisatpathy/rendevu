@@ -11,6 +11,7 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new
+    @places = Place.where(id: @cart.cart_items)
   end
 
   def create
@@ -52,7 +53,7 @@ class PlansController < ApplicationController
 
   def notify_friends
     @plan.invitations.each do |invitation|
-      send_sms(invitation.friend.phone_number, "You are invited to vote on #{@plan.name}")
+      TwilioMessenger.new(invitation.friend.phone_number, "You are invited to vote on #{@plan.name}").send_sms
     end
   end
 

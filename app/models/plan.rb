@@ -2,6 +2,8 @@ class Plan < ActiveRecord::Base
   belongs_to :user
   has_many :invitations, :dependent => :destroy
   has_many :friends, through: :invitations
+  has_many :options, :dependent => :destroy
+  has_many :places, through: :options
 
   validates :name, presence: true
   #before_destroy { |plan| plan.invitations.destroy_all}
