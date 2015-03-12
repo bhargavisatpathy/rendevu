@@ -16,11 +16,12 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
+
     @plan.add_friends(params[:plan][:friends])
     @plan.add_places(params[:plan][:places])
     @plan.user = current_user
-    if @plan.save
 
+    if @plan.save
       notify_friends
       redirect_to plans_path
     else
@@ -36,6 +37,7 @@ class PlansController < ApplicationController
   def update
     @plan = Plan.find(params[:id])
     @plan.update(plan_params)
+
     if @plan.save
       redirect_to plans_path
     else
