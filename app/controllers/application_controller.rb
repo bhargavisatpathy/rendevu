@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
     redirect_to root_path unless current_user
   end
 
+  def set_cart
+    @cart = Cart.new(session[:cart])
+  end
+  before_action :set_cart
+
   def redirect_after_login
     redirect_to session[:return_to]
     session[:return_to] = nil
@@ -31,11 +36,4 @@ class ApplicationController < ActionController::Base
     #   redirect_to path
     end
   end
-
-  def send_sms(to_phone, message)
-    client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
-    message = client.messages.create from: '7206135838', to: to_phone, body: message#, status_callback: request.base_url + '/twilio/status'
-    #render plain: message.status
-  end
-
 end

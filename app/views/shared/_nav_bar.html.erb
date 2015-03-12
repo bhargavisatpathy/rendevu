@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i></a>
+<a id="menu-toggle" href="#" class="btn btn-dark btn-lg toggle"><i class="fa fa-bars"></i>&nbsp;<span class="badge"><%= @cart.count %></span></a>
 <nav id="sidebar-wrapper">
     <ul class="sidebar-nav">
         <a id="menu-close" href="#" class="btn btn-light btn-lg pull-right toggle"><i class="fa fa-times"></i></a>
@@ -10,7 +10,7 @@
           <%= link_to "Home", root_path %>
         </li>
         <li>
-          <%= link_to "Think", places_path %>
+          <%= link_to "Venues", places_path %>
         </li>
         <li>
           <%= link_to "Plan", plans_path %>

@@ -11,17 +11,21 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new
+    @places = Place.where(id: @cart.cart_items)
   end
 
   def create
     @plan = Plan.new(plan_params)
     @plan.add_friends(params[:plan][:friends])
+    @plan.add_places(params[:plan][:places])
     @plan.user = current_user
     if @plan.save
+
       notify_friends
       redirect_to plans_path
     else
-      redirect_to new_plan_path
+      @places = Place.where(id: @cart.cart_items)
+      render :new
     end
   end
 
@@ -35,8 +39,7 @@ class PlansController < ApplicationController
     if @plan.save
       redirect_to plans_path
     else
-      flash[:errors] = @plan.errors.full_messages.uniq.join("<br>")
-      redirect_to edit_plan_path
+      render :edit
     end
   end
 
@@ -53,7 +56,9 @@ class PlansController < ApplicationController
 
   def notify_friends
     @plan.invitations.each do |invitation|
-      send_sms(invitation.friend.phone_number, "You are invited to vote on #{@plan.name}")
+      invitation.voting_token = SecureRandom.urlsafe_base64
+      invitation.save
+      TwilioMessenger.new(invitation.friend.phone_number, "You are invited to vote on #{@plan.name} #{vote_url(token: invitation.voting_token)}").send_sms
     end
   end
 

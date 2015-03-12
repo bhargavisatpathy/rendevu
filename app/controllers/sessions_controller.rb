@@ -12,11 +12,11 @@ class SessionsController < ApplicationController
 
     if user
       session[:user_id] = user.id
-      flash[:success] = "Welcome #{user.first_name}"
+      # flash[:success] = "Welcome #{user.first_name}"
       session[:forward_to] ? redirect_forward : redirect_after_login
     else
       flash[:errors] = "Email and/or password did not match"
-      redirect_to root_path
+      render :new
     end
   end
 

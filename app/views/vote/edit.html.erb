@@ -1,0 +1,18 @@
+<div class="vote-form">
+  <% if @invitation.voted %>
+    <h3>Your choice has been noted. Thanks!</h3>
+    <%= button_to "Ok", root_path, method: :get, class: "btn btn-success" %>
+  <% else %>
+    <%= link_to "X", root_path, class: "cancel" %>
+    <h1>Choose Your Option</h1>
+    <%= bootstrap_form_for(:vote, :url => {:controller => "vote", :action => "update"} ) do |f| %>
+      <h3><%= @invitation.plan.name %></h3>
+      <% @invitation.plan.options.each do |option| %>
+        <%= radio_button_tag(:option, "#{option.id}") %>
+        <%= label_tag("option_#{option.id}", option.place.name) %><br>
+      <% end %>
+      <%= hidden_field_tag(:token, @invitation.voting_token) %>
+      <%= f.submit "Submit", class: "btn btn-success" %>
+    <% end %>
+  <% end %>
+</div>
