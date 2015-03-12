@@ -1,6 +1,11 @@
 class FriendsController < ApplicationController
   def index
-    @friends = Friend.all
+    if current_user
+      @friends = current_user.friends
+    else
+      session[:forward_to] = "friends_path"
+      redirect_to signin_path
+    end
   end
 
   def new

@@ -13,19 +13,19 @@
           <%= link_to "Venues", places_path %>
         </li>
         <li>
-          <%= link_to "Plan", plans_path %>
+            <%= link_to "Friends", friends_path %>
         </li>
         <li>
-            <a href="/hangout">Hangout</a>
+          <%= link_to "Plan", plans_path %>
         </li>
+        <!-- <li>
+            <a href="/hangout">Hangout</a>
+        </li> -->
         <% if !current_user %>
           <li>
             <%= link_to "Sign In", signin_path %>
           </li>
         <% else %>
-          <li>
-              <%= link_to "Friends", friends_path %>
-          </li>
           <li>
               <%= link_to "Sign Out", signout_path, method: :delete %>
           </li>
