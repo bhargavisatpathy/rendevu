@@ -14,8 +14,11 @@ Rails.application.routes.draw do
   resources :plans
   resources :friends
 
-  get "/select_place" => "cart_items#create"
-  get "/deselect_place" => "cart_items#destroy"
+  post "/select_place" => "cart_items#create"
+  post "/deselect_place" => "cart_items#destroy"
+
+  get "/vote/:token" => "vote#edit", as: :vote
+  post "/vote" => "vote#update"
 
   post 'twilio/voice' => 'twilio#voice'
   post 'notifications/notify' => 'notifications#notify'

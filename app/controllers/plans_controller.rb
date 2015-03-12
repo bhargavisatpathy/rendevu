@@ -17,11 +17,14 @@ class PlansController < ApplicationController
   def create
     @plan = Plan.new(plan_params)
     @plan.add_friends(params[:plan][:friends])
+    @plan.add_places(params[:plan][:places])
     @plan.user = current_user
     if @plan.save
+
       notify_friends
       redirect_to plans_path
     else
+      @places = Place.where(id: @cart.cart_items)
       render :new
     end
   end
@@ -53,7 +56,9 @@ class PlansController < ApplicationController
 
   def notify_friends
     @plan.invitations.each do |invitation|
-      TwilioMessenger.new(invitation.friend.phone_number, "You are invited to vote on #{@plan.name}").send_sms
+      invitation.voting_token = SecureRandom.urlsafe_base64
+      invitation.save
+      TwilioMessenger.new(invitation.friend.phone_number, "You are invited to vote on #{@plan.name} #{vote_url(token: invitation.voting_token)}").send_sms
     end
   end
 

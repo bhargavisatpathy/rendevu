@@ -6,7 +6,8 @@ class Plan < ActiveRecord::Base
   has_many :places, through: :options
 
   validates :name, presence: true
-  #before_destroy { |plan| plan.invitations.destroy_all}
+  validates :friends, length: { minimum: 1, message: "Please select atleast one friend"}
+  validates :places, length: { in: 2..3, message: "Please select two to three places" }
 
   def add_friends(friend_ids)
     friend_ids.each do |id|
@@ -16,4 +17,11 @@ class Plan < ActiveRecord::Base
     end
   end
 
+  def add_places(place_ids)
+    place_ids.each do |id|
+      if id.present?
+        places << Place.find(id)
+      end
+    end
+  end
 end

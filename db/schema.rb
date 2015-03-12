@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311043028) do
+ActiveRecord::Schema.define(version: 20150312044844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,9 @@ ActiveRecord::Schema.define(version: 20150311043028) do
     t.boolean  "voted"
     t.integer  "plan_id"
     t.integer  "friend_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "voting_token"
   end
 
   add_index "invitations", ["friend_id"], name: "index_invitations_on_friend_id", using: :btree
@@ -46,11 +47,11 @@ ActiveRecord::Schema.define(version: 20150311043028) do
 
   create_table "options", force: :cascade do |t|
     t.datetime "time"
-    t.integer  "rank"
+    t.integer  "rank",       default: 0
     t.integer  "place_id"
     t.integer  "plan_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "options", ["place_id"], name: "index_options_on_place_id", using: :btree
