@@ -11,7 +11,7 @@ class FriendsController < ApplicationController
     @friend = Friend.new(friend_params)
     @friend.user = current_user
     if @friend.save
-      send_sms(@friend.phone_number, "Hi #{@friend.name}, #{@friend.user.first_name} has added you as a friend in Rendevu")
+      TwilioMessenger.new(@friend.phone_number, "Hi #{@friend.name}, #{@friend.user.first_name} has added you as a friend in Rendevu").send_sms
       flash[:success] = "You've add a friend to you friend list"
       redirect_to friends_path
     else
