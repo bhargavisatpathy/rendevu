@@ -1,0 +1,36 @@
+<% if params[:controller] == "plans" %>
+  <div id="plan-header">
+    <div id="heading-name">
+      <h1 class="heading-name">My Plans</h1>
+    </div>
+  </div>
+<% elsif params[:controller] == "friends" %>
+  <div id="friends-header">
+    <div id="heading-name">
+      <h1 class="heading-name">My Friends</h1>
+    </div>
+  </div>
+<% elsif params[:controller] == "places" && params[:action] == "index"%>
+  <div id="venue-header">
+    <div id="heading-name">
+      <h1 class="heading-name">Venues</h1>
+    </div>
+    <div id="venue-category">
+      <%= menu_group do %>
+        <%= drop_down "Category" do %>
+          <%= menu_item "Restaurants", place_path(1) %>
+          <%= menu_item "Parks", place_path(2) %>
+          <%= menu_item "Events", place_path(3) %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <br>
+<% elsif params[:controller] == "places" && params[:action] == "show"%>
+  <div id="venue-header">
+    <div id="heading-name">
+      <h1 class="heading-name"><%= @category.name %></h1>
+    </div>
+  </div>
+  <br><br>
+<% end %>
