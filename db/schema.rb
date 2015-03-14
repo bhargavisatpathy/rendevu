@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312044844) do
+ActiveRecord::Schema.define(version: 20150313060950) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 20150312044844) do
   add_index "invitations", ["plan_id"], name: "index_invitations_on_plan_id", using: :btree
 
   create_table "options", force: :cascade do |t|
-    t.datetime "time"
     t.integer  "rank",       default: 0
     t.integer  "place_id"
     t.integer  "plan_id"
@@ -73,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150312044844) do
     t.integer  "user_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.datetime "time"
   end
 
   add_index "plans", ["user_id"], name: "index_plans_on_user_id", using: :btree

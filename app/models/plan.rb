@@ -6,6 +6,7 @@ class Plan < ActiveRecord::Base
   has_many :places, through: :options
 
   validates :name, presence: true
+  validates :time, presence: true
   validates :friends, length: { minimum: 1, message: "Please select atleast one friend"}
   validates :places, length: { in: 2..3, message: "Please select two to three places" }
 
@@ -22,6 +23,12 @@ class Plan < ActiveRecord::Base
       if id.present?
         places << Place.find(id)
       end
+    end
+  end
+
+  def set_time(date_time)
+    if date_time > DateTime.now
+      self.time = date_time
     end
   end
 end
