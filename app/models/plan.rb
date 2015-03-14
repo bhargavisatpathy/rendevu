@@ -26,7 +26,7 @@ class Plan < ActiveRecord::Base
     end
   end
 
-  def set_time(date_time)
+  def add_time(date_time)
     if date_time > DateTime.now
       self.time = date_time
     end
