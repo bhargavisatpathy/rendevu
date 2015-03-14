@@ -19,6 +19,12 @@ class PlansController < ApplicationController
 
     @plan.add_friends(params[:plan][:friends])
     @plan.add_places(params[:plan][:places])
+    @plan.set_time(DateTime.new(params[:option]["time(1i)"].to_i,
+      params[:option]["time(2i)"].to_i,params[:option]["time(3i)"].to_i,
+      params[:option]["time(4i)"].to_i, params[:option]["time(5i)"].to_i))
+    if @plan.time.nil?
+      flash[:errors] = "Please select a future date!"
+    end
     @plan.user = current_user
 
     if @plan.save

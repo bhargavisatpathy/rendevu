@@ -8,6 +8,6 @@
                                                       { :prompt => "Please select"},
                                                       { :multiple => true, :size => 3 }
               ) %>
-
+  <%= datetime_select(:option, :time) %>
   <%= f.submit "Submit", class: "btn btn-success" %>
 <% end %>
