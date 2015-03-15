@@ -1,5 +1,7 @@
 <div class="vote-form">
-  <% if @invitation.voted %>
+  <% if !@invitation %>
+    <h3>The plan has been cancelled!</h3>
+  <% elsif @invitation.voted %>
     <h3>Your choice has been noted. Thanks!</h3>
     <%= button_to "Ok", root_path, method: :get, class: "btn btn-success" %>
   <% else %>

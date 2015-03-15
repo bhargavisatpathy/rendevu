@@ -16,16 +16,9 @@ class PlansController < ApplicationController
 
   def create
     @plan = Plan.new(plan_params)
-
-    @plan.add_friends(params[:plan][:friends])
-    @plan.add_venues(params[:plan][:venues])
-    @plan.add_time(DateTime.new(params[:option]["time(1i)"].to_i,
-      params[:option]["time(2i)"].to_i,params[:option]["time(3i)"].to_i,
-      params[:option]["time(4i)"].to_i, params[:option]["time(5i)"].to_i))
-    if @plan.time.nil?
-      flash[:errors] = "Please select a future date!"
-    end
-    @plan.user = current_user
+                .init(current_user,
+                    params[:plan][:friends],
+                    params[:plan][:venues])
 
     if @plan.save
       notify_friends
@@ -59,7 +52,7 @@ class PlansController < ApplicationController
   private
 
   def plan_params
-    params.require(:plan).permit(:name)
+    params.require(:plan).permit(:name, :time)
   end
 
   def notify_friends
@@ -69,5 +62,10 @@ class PlansController < ApplicationController
       TwilioMessenger.new(invitation.friend.phone_number, "You are invited to vote on #{@plan.name} #{vote_url(token: invitation.voting_token)}").send_sms
     end
   end
+
+  # def time_params
+  #   DateTime.new(params["time(1i)"].to_i, params["time(2i)"].to_i, params["time(3i)"].to_i,
+  #     params["time(4i)"].to_i, params["time(5i)"].to_i)
+  # end
 
 end

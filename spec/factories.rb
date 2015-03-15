@@ -8,4 +8,8 @@ FactoryGirl.define do
     password_confirmation "password"
   end
 
+  factory :friend do
+    name "Luna"
+    phone_number "1234567891"
+  end
 end

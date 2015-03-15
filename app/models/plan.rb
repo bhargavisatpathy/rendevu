@@ -5,10 +5,25 @@ class Plan < ActiveRecord::Base
   has_many :options, :dependent => :destroy
   has_many :places, through: :options
 
+  validates :user, presence: true
   validates :name, presence: true
   validates :time, presence: true
+  validate  :future_time
   validates :friends, length: { minimum: 1, message: "Please select atleast one friend"}
   validates :options, length: { in: 2..3, message: "Please select two to three venues" }
+
+  def init(user, friend_ids, venue_ids)
+    self.user = user
+    add_friends friend_ids if friend_ids
+    add_venues venue_ids if venue_ids
+    self
+  end
+
+  def future_time
+    if !time.blank? && DateTime.now > time
+      errors.add(:time, "Please select a future time")
+    end
+  end
 
   def add_friends(friend_ids)
     friend_ids.each do |id|
@@ -28,13 +43,8 @@ class Plan < ActiveRecord::Base
     end
   end
 
-  def add_time(date_time)
-    if date_time > DateTime.now
-      self.time = date_time
-    end
-  end
-
   def venues
     options.map { |option| option.venue }
   end
+
 end
