@@ -1,10 +1,10 @@
 <div class="panel-heading">
   <h3>
-    <% if @cart.contains? "#{place.id}" %>
-      <%= link_to content_tag(:i, nil, class: "fa fa-check-square fa-lg btn-success"), deselect_place_path(item_id: place.id), method: :post %>
+    <% if @cart.contains? "#{venue.id}" %>
+      <%= link_to content_tag(:i, nil, class: "fa fa-check-square fa-lg btn-success"), deselect_venue_path(item_id: venue.id), method: :post %>
     <% else %>
-      <%= link_to content_tag(:i, nil, class: "fa fa-check-square fa-lg btn-default"), select_place_path(item_id: place.id), method: :post %>
+      <%= link_to content_tag(:i, nil, class: "fa fa-check-square fa-lg btn-default"), select_venue_path(item_id: venue.id), method: :post %>
     <% end %>
-    &nbsp;<%= place.name %>
+    &nbsp;<%= venue.name %>
   </h3>
 </div>

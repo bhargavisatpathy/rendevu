@@ -4,7 +4,7 @@
                                                       { :prompt => "Please select"},
                                                       { :multiple => true, :size => 3 }
               ) %>
-  <%= f.select(:places, @places.collect { |place| [place.name, place.id] },
+  <%= f.select(:venues, @venues.collect { |venue| [venue.name, venue.id] },
                                                       { :prompt => "Please select"},
                                                       { :multiple => true, :size => 3 }
               ) %>

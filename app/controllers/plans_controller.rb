@@ -11,14 +11,14 @@ class PlansController < ApplicationController
 
   def new
     @plan = Plan.new
-    @places = Place.where(id: @cart.cart_items)
+    @venues = @cart.cart_items.map { |id| Venue.find(id) }
   end
 
   def create
     @plan = Plan.new(plan_params)
 
     @plan.add_friends(params[:plan][:friends])
-    @plan.add_places(params[:plan][:places])
+    @plan.add_venues(params[:plan][:venues])
     @plan.add_time(DateTime.new(params[:option]["time(1i)"].to_i,
       params[:option]["time(2i)"].to_i,params[:option]["time(3i)"].to_i,
       params[:option]["time(4i)"].to_i, params[:option]["time(5i)"].to_i))
@@ -31,7 +31,7 @@ class PlansController < ApplicationController
       notify_friends
       redirect_to plans_path
     else
-      @places = Place.where(id: @cart.cart_items)
+      @venues = @cart.cart_items.map { |id| Venue.find(id) }
       render :new
     end
   end

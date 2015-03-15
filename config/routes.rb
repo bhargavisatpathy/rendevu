@@ -10,12 +10,12 @@ Rails.application.routes.draw do
   get "/signup" => "users#new"
   post "/signup" => "users#create"
 
-  resources :places
+  resources :venues
   resources :plans
   resources :friends
 
-  post "/select_place" => "cart_items#create"
-  post "/deselect_place" => "cart_items#destroy"
+  post "/select_venue" => "cart_items#create"
+  post "/deselect_venue" => "cart_items#destroy"
 
   get "/vote/:token" => "vote#edit", as: :vote
   post "/vote" => "vote#update"

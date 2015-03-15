@@ -6,7 +6,7 @@ class TwilioMessenger
   end
 
   def send_sms
-    client = Twilio::REST::Client.new Rails.application.secrets.twilio_account_sid, Rails.application.secrets.twilio_auth_token
+    client = Twilio::REST::Client.new ENV['twilio_account_sid'], ENV['twilio_auth_token']
     client.messages.create from: '7206135838', to: @to_phone, body: @message#, status_callback: request.base_url + '/twilio/status'
   end
 end
