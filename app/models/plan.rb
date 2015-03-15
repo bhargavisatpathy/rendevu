@@ -8,7 +8,7 @@ class Plan < ActiveRecord::Base
   validates :name, presence: true
   validates :time, presence: true
   validates :friends, length: { minimum: 1, message: "Please select atleast one friend"}
-  validates :places, length: { in: 2..3, message: "Please select two to three places" }
+  validates :options, length: { in: 2..3, message: "Please select two to three venues" }
 
   def add_friends(friend_ids)
     friend_ids.each do |id|
@@ -18,10 +18,12 @@ class Plan < ActiveRecord::Base
     end
   end
 
-  def add_places(place_ids)
-    place_ids.each do |id|
+  def add_venues(venue_ids)
+    venue_ids.each do |id|
       if id.present?
-        places << Place.find(id)
+        option = Option.new
+        option.venue_id = id
+        options << option
       end
     end
   end
@@ -30,5 +32,9 @@ class Plan < ActiveRecord::Base
     if date_time > DateTime.now
       self.time = date_time
     end
+  end
+
+  def venues
+    options.map { |option| option.venue }
   end
 end

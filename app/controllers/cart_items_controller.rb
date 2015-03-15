@@ -7,7 +7,6 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    puts "this is destroy"
     @cart.remove_item(params[:item_id])
     redirect_to request.referer
   end

@@ -9,7 +9,7 @@
       <h3><%= @invitation.plan.name %></h3>
       <% @invitation.plan.options.each do |option| %>
         <%= radio_button_tag(:option, "#{option.id}") %>
-        <%= label_tag("option_#{option.id}", option.place.name) %><br>
+        <%= label_tag("option_#{option.id}", option.venue.name) %><br>
       <% end %>
       <%= hidden_field_tag(:token, @invitation.voting_token) %>
       <%= f.submit "Submit", class: "btn btn-success" %>
