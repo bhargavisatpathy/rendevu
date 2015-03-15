@@ -35,6 +35,12 @@
   font-size: 15px;
 }
 
+.plan_links {
+  position: absolute;
+  right: 0px;
+  width: 35%;
+}
+
 h4{
   color: white;
 }
