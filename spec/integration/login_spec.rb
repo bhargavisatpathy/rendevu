@@ -28,7 +28,7 @@ describe "user authorization", type: :feature do
   end
 
   describe "Visitor(not logged user) actions" do
-    it "can see the venues" do
+    xit "can see the venues" do
       visit root_url
       click_link("Venues")
       expect(page).to have_content("Venue")
@@ -39,7 +39,5 @@ describe "user authorization", type: :feature do
       click_link_or_button("Plan")
       expect(current_path).to eq("signin_path")
     end
-
-
   end
 end

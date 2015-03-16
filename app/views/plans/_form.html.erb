@@ -1,9 +1,11 @@
 <%= bootstrap_form_for(@plan)  do |f| %>
   <%= f.text_field :name %>
+  <%= link_to 'Add Friends', new_friend_path, class: 'plan_links' %>
   <%= f.select(:friends, current_user.friends.collect { |friend| [friend.name, friend.id] },
                                                       { :prompt => "Please select"},
                                                       { :multiple => true, :size => 3 }
               ) %>
+  <%= link_to 'Explore Venues', venues_path, class: 'plan_links' %>
   <%= f.select(:venues, @venues.collect { |venue| [venue.name, venue.id] },
                                                       { :prompt => "Please select"},
                                                       { :multiple => true, :size => 3 }

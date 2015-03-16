@@ -3,7 +3,6 @@ class Plan < ActiveRecord::Base
   has_many :invitations, :dependent => :destroy
   has_many :friends, through: :invitations
   has_many :options, :dependent => :destroy
-  has_many :places, through: :options
 
   validates :user, presence: true
   validates :name, presence: true
