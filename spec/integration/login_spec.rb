@@ -36,7 +36,8 @@ describe "user authorization", type: :feature do
 
     xit "gets redirected to sign in page with tries to visit plan page" do
       visit root_url
-      click_link_or_button("Plan")
+      current_user = nil
+      click_link("Plan")
       expect(current_path).to eq("signin_path")
     end
   end

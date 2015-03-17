@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :plans
   resources :friends
 
+  post "/hangout/:id" => "plans#hangout", as: :hangout
   post "/select_venue" => "cart_items#create"
   post "/deselect_venue" => "cart_items#destroy"
 

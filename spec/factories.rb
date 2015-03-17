@@ -9,7 +9,7 @@ FactoryGirl.define do
   end
 
   factory :friend do
-    name "Luna"
+    name "Arya"
     phone_number "1234567891"
   end
 end

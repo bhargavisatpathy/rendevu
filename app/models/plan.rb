@@ -1,8 +1,8 @@
 class Plan < ActiveRecord::Base
   belongs_to :user
-  has_many :invitations, :dependent => :destroy
+  has_many :invitations, dependent: :destroy
   has_many :friends, through: :invitations
-  has_many :options, :dependent => :destroy
+  has_many :options, dependent: :destroy, autosave: true
 
   validates :user, presence: true
   validates :name, presence: true
@@ -43,7 +43,10 @@ class Plan < ActiveRecord::Base
   end
 
   def venues
-    options.map { |option| option.venue }
+    options.order(rank: :desc).map { |option| option.venue }
   end
 
+  def selected_venue
+    options.find_by(selected: true).venue
+  end
 end

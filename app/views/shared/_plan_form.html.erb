@@ -1,0 +1,10 @@
+<h3><%= plan.name %></h3>
+<p>Time to meet: <%= plan.time %></p>
+<p>
+  <h4>Venues:</h4>
+<% plan.options.each_with_index do |option, i| %>
+  <%= radio_button_tag(:option, "#{option.id}", (i == 0), disabled: (plan.status != 'open')) %>
+  <%= label_tag "option_#{option.id}", option.venue.name %>
+  <%= option.venue.location['formattedAddress'][0..-2].join(' ') %>
+</p>
+<% end %>

@@ -14,6 +14,10 @@ class PlansController < ApplicationController
     @venues = @cart.cart_items.map { |id| Venue.find(id) }
   end
 
+  def edit
+    @plan = Plan.find(params[:id])
+  end
+
   def create
     @plan = Plan.new(plan_params)
                 .init(current_user,
@@ -29,24 +33,39 @@ class PlansController < ApplicationController
     end
   end
 
-  def edit
-    @plan = Plan.find(params[:id])
-  end
+  # def edit
+  #   @plan = Plan.find(params[:id])
+  #   @venues = @cart.cart_items.map { |id| Venue.find(id) }
+  # end
 
-  def update
-    @plan = Plan.find(params[:id])
-    @plan.update(plan_params)
-
-    if @plan.save
-      redirect_to plans_path
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   @plan = Plan.find(params[:id])
+  #   @plan.update(plan_params)
+  #
+  #   if @plan.save
+  #     redirect_to plans_path
+  #   else
+  #     @venues = @cart.cart_items.map { |id| Venue.find(id) }
+  #     render :edit
+  #   end
+  # end
 
   def destroy
     Plan.destroy(params[:id])
     redirect_to plans_path
+  end
+
+  def update
+    @plan = Plan.find(params[:id])
+    @plan.options.find(params[:option].to_i).selected = true
+    @plan.status = "finalized"
+    if @plan.save
+      invite_friends
+      flash[:notice] = "Final invitation was sent to your friends!"
+      redirect_to plans_path
+    else
+      render :show
+    end
   end
 
   private
@@ -63,9 +82,9 @@ class PlansController < ApplicationController
     end
   end
 
-  # def time_params
-  #   DateTime.new(params["time(1i)"].to_i, params["time(2i)"].to_i, params["time(3i)"].to_i,
-  #     params["time(4i)"].to_i, params["time(5i)"].to_i)
-  # end
-
+  def invite_friends
+    @plan.friends.each do |friend|
+      TwilioMessenger.new(friend.phone_number, "You are invited to hangout for #{@plan.name} at #{@plan.selected_venue.name} on #{@plan.time}").send_sms
+    end
+  end
 end

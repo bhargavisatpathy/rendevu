@@ -1,5 +1,13 @@
-<div class="plan-form">
+<div class="plan-details">
   <%= link_to "X", plans_path, class: "cancel" %>
-  <h1>Edit Plan</h1>
-  <%= render "form" %>
+  <%= render partial: "shared/plan_form", locals: { plan: @plan} %>
+
+  <h4>Friends:</h4>
+  <% @plan.friends.each do |friend| %>
+    <p><%= friend.name %>
+    <%= friend.phone_number %></p>
+  <% end %>
+  <% if @plan.status == "open" %>
+    <%= button_to "Finalize", plan_path(@plan), data: { confirm: 'Are you sure, you want to send final invitations?' }, class: "btn btn-default" %>
+  <% end %>
 </div>

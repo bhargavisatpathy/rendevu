@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150315065133) do
+ActiveRecord::Schema.define(version: 20150317043130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "friends", force: :cascade do |t|
     t.string   "name"
@@ -41,12 +48,23 @@ ActiveRecord::Schema.define(version: 20150315065133) do
   create_table "options", force: :cascade do |t|
     t.integer  "rank",       default: 0
     t.integer  "plan_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "venue_id"
+    t.boolean  "selected",   default: false
   end
 
   add_index "options", ["plan_id"], name: "index_options_on_plan_id", using: :btree
+
+  create_table "places", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "places", ["category_id"], name: "index_places_on_category_id", using: :btree
 
   create_table "plans", force: :cascade do |t|
     t.string   "name"
@@ -77,5 +95,6 @@ ActiveRecord::Schema.define(version: 20150315065133) do
   add_foreign_key "invitations", "friends"
   add_foreign_key "invitations", "plans"
   add_foreign_key "options", "plans"
+  add_foreign_key "places", "categories"
   add_foreign_key "plans", "users"
 end
