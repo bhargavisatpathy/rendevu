@@ -40,7 +40,7 @@ class PlansController < ApplicationController
 
   def update
     @plan = Plan.find(params[:id])
-    @plan.options.find(params[:option].to_i).selected = true
+    @plan.select_option(params[:option].to_i)
     @plan.status = "finalized"
     if @plan.save
       invite_friends

@@ -2,7 +2,7 @@ class Plan < ActiveRecord::Base
   belongs_to :user
   has_many :invitations, dependent: :destroy
   has_many :friends, through: :invitations
-  has_many :options, dependent: :destroy, autosave: true
+  has_many :options, dependent: :destroy
 
   validates :user, presence: true
   validates :name, presence: true
@@ -52,5 +52,11 @@ class Plan < ActiveRecord::Base
 
   def selected_venue
     options.find_by(selected: true).venue
+  end
+
+  def select_option(option_id)
+    option = options.find(option_id)
+    option.selected = true
+    option.save
   end
 end

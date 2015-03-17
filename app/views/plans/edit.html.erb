@@ -1,13 +1,16 @@
 <div class="plan-details">
   <%= link_to "X", plans_path, class: "cancel" %>
-  <%= render partial: "shared/plan_form", locals: { plan: @plan} %>
 
-  <h4>Friends:</h4>
-  <% @plan.friends.each do |friend| %>
-    <p><%= friend.name %>
-    <%= friend.phone_number %></p>
-  <% end %>
-  <% if @plan.status == "open" %>
-    <%= button_to "Finalize", plan_path(@plan), data: { confirm: 'Are you sure, you want to send final invitations?' }, class: "btn btn-default" %>
+
+  <%= bootstrap_form_for(@plan) do |f| %>
+    <%= render partial: "shared/plan_form", locals: { plan: @plan} %>
+    <h4>Friends:</h4>
+    <% @plan.friends.each do |friend| %>
+      <p><%= friend.name %>
+      <%= friend.phone_number %></p>
+    <% end %>
+    <% if @plan.status == "open" %>
+      <%= f.submit "Finalize", data: { confirm: 'Are you sure, you want to send final invitations?' }, class: "btn btn-success" %>
+    <% end %>
   <% end %>
 </div>
