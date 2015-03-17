@@ -42,8 +42,12 @@ class Plan < ActiveRecord::Base
     end
   end
 
+  def ranked_options
+    options.order(rank: :desc)
+  end
+
   def venues
-    options.order(rank: :desc).map { |option| option.venue }
+    ranked_options.map { |option| option.venue }
   end
 
   def selected_venue

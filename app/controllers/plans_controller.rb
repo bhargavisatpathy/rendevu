@@ -33,23 +33,6 @@ class PlansController < ApplicationController
     end
   end
 
-  # def edit
-  #   @plan = Plan.find(params[:id])
-  #   @venues = @cart.cart_items.map { |id| Venue.find(id) }
-  # end
-
-  # def update
-  #   @plan = Plan.find(params[:id])
-  #   @plan.update(plan_params)
-  #
-  #   if @plan.save
-  #     redirect_to plans_path
-  #   else
-  #     @venues = @cart.cart_items.map { |id| Venue.find(id) }
-  #     render :edit
-  #   end
-  # end
-
   def destroy
     Plan.destroy(params[:id])
     redirect_to plans_path
