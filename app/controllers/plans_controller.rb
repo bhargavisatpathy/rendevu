@@ -47,7 +47,7 @@ class PlansController < ApplicationController
       flash[:notice] = "Final invitation was sent to your friends!"
       redirect_to plans_path
     else
-      render :show
+      render :edit
     end
   end
 
