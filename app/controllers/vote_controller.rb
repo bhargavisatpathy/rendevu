@@ -7,12 +7,9 @@ class VoteController < ApplicationController
     @invitation = Invitation.find_by(voting_token: params[:token])
     @invitation.voted = true
     @invitation.save
-    @invitation.plan.options.each do |option|
-      if option.id.to_s == params[:option]
-        option.rank += 1
-        option.save
-        break
-      end
+    @invitation.plan.options.where(id: params[:option].to_i).find_each do |option|
+      option.rank += 1
+      option.save
     end
     render :edit
   end
