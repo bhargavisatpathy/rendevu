@@ -28,17 +28,28 @@ describe "user authorization", type: :feature do
   end
 
   describe "Visitor(not logged user) actions" do
-    xit "can see the venues" do
+    it "can see the venues" do
       visit root_url
-      click_link("Venues")
-      expect(page).to have_content("Venue")
+      click_link "Venues"
+      expect(page).to have_content("Venues")
     end
 
-    xit "gets redirected to sign in page with tries to visit plan page" do
+    it "gets redirected to sign in page with tries to visit plan page" do
       visit root_url
       current_user = nil
-      click_link("Plan")
-      expect(current_path).to eq("signin_path")
+      within("#sidebar-wrapper") do
+        click_link("Plan")
+      end
+      expect(current_path).to eq("/signin")
+    end
+
+    it "gets redirected to sign in page with tries to visit friends page" do
+      visit root_url
+      current_user = nil
+      within("#sidebar-wrapper") do
+        click_link("Friends")
+      end
+      expect(current_path).to eq("/signin")
     end
   end
 end

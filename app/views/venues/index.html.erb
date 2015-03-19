@@ -3,8 +3,14 @@
   <div class="col-sm-4">
     <div class="panel panel-default">
       <%= render partial: "shared/cart_items", locals: { venue: venue } %>
-      <div class="panel-body"><img src="/assets/restaurant.jpg" class="img-responsive"></div>
-      <div class="panel-footer"><%= venue.location['formattedAddress'][0..-2].join(' ')%></div>
+      <div class="panel-body">
+        <% if venue.photo %>
+          <%= image_tag "#{venue.photo['prefix']}500x500#{venue.photo['suffix']}", class: "img-responsive" %></div>
+        <% else %>
+          <%= image_tag "restaurant.jpg", class: "img-responsive" %>
+        <% end %>
+        <%= venue.address %>
+      </div>
     </div>
   </div>
 </section>

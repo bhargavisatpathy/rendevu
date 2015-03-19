@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class FoursquareService
   attr_reader :connection
 
@@ -14,14 +16,19 @@ class FoursquareService
     venues = []
     groups.each do |group|
       group['items'].each do |item|
-        venues << item['venue']
+        venues << venue(item['venue']['id'])
       end
     end
     venues
   end
 
   def venue(id)
-    parse(connection.get("venues/#{id}"))['response']['venue']
+    venue = parse(connection.get("venues/#{id}"))['response']['venue']
+    _venue = { id: venue['id'], name: venue['name'], address: venue['location']['formattedAddress'][0..-2].join(' ') }
+    if !venue['photos']['groups'].empty?
+      _venue['photo'] = venue['photos']['groups'][0]['items'][0]
+    end
+    OpenStruct.new _venue
   end
 
   private

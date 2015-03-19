@@ -12,4 +12,9 @@ FactoryGirl.define do
     name "Arya"
     phone_number "1234567891"
   end
+
+  factory :invitation do
+    voted false
+  end
+
 end
