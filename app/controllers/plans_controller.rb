@@ -28,6 +28,10 @@ class PlansController < ApplicationController
       notify_friends
       redirect_to plans_path
     else
+      if !@plan.errors[:options].empty?
+
+        @plan.errors.add(:venues, "Please select two to three venues")
+      end
       @venues = @cart.cart_items.map { |id| Venue.find(id) }
       render :new
     end

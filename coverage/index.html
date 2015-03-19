@@ -14,14 +14,14 @@
       <img src="./assets/0.8.0/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-19T00:52:45-06:00">2015-03-19T00:52:45-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2015-03-19T02:06:05-06:00">2015-03-19T02:06:05-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">91.55%</span></span>
+    (<span class="covered_percent"><span class="green">91.15%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
@@ -32,9 +32,9 @@
   <a name="AllFiles"></a>
   <div>
     <b>49</b> files in total.
-    <b>686</b> relevant lines. 
+    <b>689</b> relevant lines. 
     <span class="green"><b>628</b> lines covered</span> and
-    <span class="red"><b>58</b> lines missed </span>
+    <span class="red"><b>61</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -82,11 +82,11 @@
       
       <tr>
         <td class="strong"><a href="#39992cced2e816a15cb8b3d16f106c7f9133a177" class="src_link" title="app/controllers/plans_controller.rb">app/controllers/plans_controller.rb</a></td>
-        <td class="red strong">42.86 %</td>
-        <td>73</td>
-        <td>42</td>
+        <td class="red strong">40.0 %</td>
+        <td>78</td>
+        <td>45</td>
         <td>18</td>
-        <td>24</td>
+        <td>27</td>
         <td>0.6</td>
       </tr>
       
@@ -183,7 +183,7 @@
       <tr>
         <td class="strong"><a href="#b8dc56ef693d54faca8ac7ee4c9d62ca84867b00" class="src_link" title="app/models/plan.rb">app/models/plan.rb</a></td>
         <td class="yellow strong">89.74 %</td>
-        <td>62</td>
+        <td>70</td>
         <td>39</td>
         <td>35</td>
         <td>4</td>
@@ -1207,11 +1207,11 @@
         <div class="source_table" id="39992cced2e816a15cb8b3d16f106c7f9133a177">
   <div class="header">
     <h3>app/controllers/plans_controller.rb</h3>
-    <h4><span class="red">42.86 %</span> covered</h4>
+    <h4><span class="red">40.0 %</span> covered</h4>
     <div>
-      <b>42</b> relevant lines. 
+      <b>45</b> relevant lines. 
       <span class="green"><b>18</b> lines covered</span> and
-      <span class="red"><b>24</b> lines missed.</span>
+      <span class="red"><b>27</b> lines missed.</span>
     </div>
   </div>
   
@@ -1401,49 +1401,49 @@
         <li class="missed" data-hits="0" data-linenumber="31">
           
           
-          <code class="ruby">      @venues = @cart.cart_items.map { |id| Venue.find(id) }</code>
+          <code class="ruby">      byebug</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="32">
           
           
-          <code class="ruby">      render :new</code>
+          <code class="ruby">      if @plan.errors[:options]</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="34">
+        <li class="missed" data-hits="0" data-linenumber="34">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">        @plan.errors.add(:venues, &quot;Please select two to three venues&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="35">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="36">
-          <span class="hits">1</span>
+        <li class="missed" data-hits="0" data-linenumber="36">
           
-          <code class="ruby">  def destroy</code>
+          
+          <code class="ruby">      @venues = @cart.cart_items.map { |id| Venue.find(id) }</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="37">
           
           
-          <code class="ruby">    Plan.destroy(params[:id])</code>
+          <code class="ruby">      render :new</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="38">
+        <li class="never" data-hits="" data-linenumber="38">
           
           
-          <code class="ruby">    redirect_to plans_path</code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="39">
@@ -1461,196 +1461,226 @@
         <li class="covered" data-hits="1" data-linenumber="41">
           <span class="hits">1</span>
           
-          <code class="ruby">  def update</code>
+          <code class="ruby">  def destroy</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="42">
           
           
-          <code class="ruby">    @plan = Plan.find(params[:id])</code>
+          <code class="ruby">    Plan.destroy(params[:id])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="43">
           
           
-          <code class="ruby">    @plan.select_option(params[:option].to_i)</code>
+          <code class="ruby">    redirect_to plans_path</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="44">
           
           
-          <code class="ruby">    @plan.status = &quot;finalized&quot;</code>
+          <code class="ruby">  end</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="45">
+        <li class="never" data-hits="" data-linenumber="45">
           
           
-          <code class="ruby">    if @plan.save</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="46">
+        <li class="covered" data-hits="1" data-linenumber="46">
+          <span class="hits">1</span>
           
-          
-          <code class="ruby">      invite_friends</code>
+          <code class="ruby">  def update</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="47">
           
           
-          <code class="ruby">      flash[:notice] = &quot;Final invitation was sent to your friends!&quot;</code>
+          <code class="ruby">    @plan = Plan.find(params[:id])</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="48">
           
           
-          <code class="ruby">      redirect_to plans_path</code>
+          <code class="ruby">    @plan.select_option(params[:option].to_i)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="49">
+        <li class="missed" data-hits="0" data-linenumber="49">
           
           
-          <code class="ruby">    else</code>
+          <code class="ruby">    @plan.status = &quot;finalized&quot;</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="50">
           
           
+          <code class="ruby">    if @plan.save</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="51">
+          
+          
+          <code class="ruby">      invite_friends</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="52">
+          
+          
+          <code class="ruby">      flash[:notice] = &quot;Final invitation was sent to your friends!&quot;</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="53">
+          
+          
+          <code class="ruby">      redirect_to plans_path</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="54">
+          
+          
+          <code class="ruby">    else</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="55">
+          
+          
           <code class="ruby">      render :edit</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="51">
+        <li class="never" data-hits="" data-linenumber="56">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="52">
+        <li class="never" data-hits="" data-linenumber="57">
           
           
           <code class="ruby">  end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="53">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="54">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  private</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="55">
-          
-          
-          <code class="ruby"></code>
-        </li>
-      
-        <li class="covered" data-hits="1" data-linenumber="56">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  def plan_params</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="57">
-          
-          
-          <code class="ruby">    params.require(:plan).permit(:name, :time)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="58">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby"></code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="59">
+        <li class="covered" data-hits="1" data-linenumber="59">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  private</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="60">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="60">
+        <li class="covered" data-hits="1" data-linenumber="61">
           <span class="hits">1</span>
           
-          <code class="ruby">  def notify_friends</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="61">
-          
-          
-          <code class="ruby">    @plan.invitations.each do |invitation|</code>
+          <code class="ruby">  def plan_params</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="62">
           
           
-          <code class="ruby">      invitation.voting_token = SecureRandom.urlsafe_base64</code>
+          <code class="ruby">    params.require(:plan).permit(:name, :time)</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="63">
-          
-          
-          <code class="ruby">      invitation.save</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="64">
-          
-          
-          <code class="ruby">      TwilioMessenger.new(invitation.friend.phone_number, &quot;You are invited to vote on #{@plan.name} #{vote_url(token: invitation.voting_token)}&quot;).send_sms</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="65">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="66">
+        <li class="never" data-hits="" data-linenumber="63">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="67">
+        <li class="never" data-hits="" data-linenumber="64">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="68">
+        <li class="covered" data-hits="1" data-linenumber="65">
           <span class="hits">1</span>
           
-          <code class="ruby">  def invite_friends</code>
+          <code class="ruby">  def notify_friends</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="66">
+          
+          
+          <code class="ruby">    @plan.invitations.each do |invitation|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="67">
+          
+          
+          <code class="ruby">      invitation.voting_token = SecureRandom.urlsafe_base64</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="68">
+          
+          
+          <code class="ruby">      invitation.save</code>
         </li>
       
         <li class="missed" data-hits="0" data-linenumber="69">
           
           
-          <code class="ruby">    @plan.friends.each do |friend|</code>
+          <code class="ruby">      TwilioMessenger.new(invitation.friend.phone_number, &quot;You are invited to vote on #{@plan.name} #{vote_url(token: invitation.voting_token)}&quot;).send_sms</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="70">
-          
-          
-          <code class="ruby">      TwilioMessenger.new(friend.phone_number, &quot;You are invited to hangout for #{@plan.name} at #{@plan.selected_venue.name} on #{@plan.time}&quot;).send_sms</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="71">
+        <li class="never" data-hits="" data-linenumber="70">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="72">
+        <li class="never" data-hits="" data-linenumber="71">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="73">
+        <li class="never" data-hits="" data-linenumber="72">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="73">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def invite_friends</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="74">
+          
+          
+          <code class="ruby">    @plan.friends.each do |friend|</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="75">
+          
+          
+          <code class="ruby">      TwilioMessenger.new(friend.phone_number, &quot;You are invited to hangout for #{@plan.name} at #{@plan.selected_venue.name} on #{@plan.time}&quot;).send_sms</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="76">
+          
+          
+          <code class="ruby">    end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="77">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="78">
           
           
           <code class="ruby">end</code>
@@ -2682,142 +2712,142 @@
           <code class="ruby">  validate  :future_time</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="11">
+        <li class="never" data-hits="" data-linenumber="11">
+          
+          
+          <code class="ruby">  # validate  :venue_count</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="12">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="13">
           <span class="hits">1</span>
           
           <code class="ruby">  validates :friends, length: { minimum: 1, message: &quot;Please select atleast one friend&quot;}</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="12">
+        <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
           <code class="ruby">  validates :options, length: { in: 2..3, message: &quot;Please select two to three venues&quot; }</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="13">
+        <li class="never" data-hits="" data-linenumber="15">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="14">
+        <li class="covered" data-hits="1" data-linenumber="16">
           <span class="hits">1</span>
           
           <code class="ruby">  def init(user, friend_ids, venue_ids)</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="15">
+        <li class="covered" data-hits="15" data-linenumber="17">
           <span class="hits">15</span>
           
           <code class="ruby">    self.user = user</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="16">
+        <li class="covered" data-hits="15" data-linenumber="18">
           <span class="hits">15</span>
           
           <code class="ruby">    add_friends friend_ids if friend_ids</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="17">
+        <li class="covered" data-hits="15" data-linenumber="19">
           <span class="hits">15</span>
           
           <code class="ruby">    add_venues venue_ids if venue_ids</code>
         </li>
       
-        <li class="covered" data-hits="15" data-linenumber="18">
+        <li class="covered" data-hits="15" data-linenumber="20">
           <span class="hits">15</span>
           
           <code class="ruby">    self</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="19">
+        <li class="never" data-hits="" data-linenumber="21">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="20">
+        <li class="never" data-hits="" data-linenumber="22">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="21">
+        <li class="covered" data-hits="1" data-linenumber="23">
           <span class="hits">1</span>
           
           <code class="ruby">  def future_time</code>
         </li>
       
-        <li class="covered" data-hits="25" data-linenumber="22">
+        <li class="covered" data-hits="25" data-linenumber="24">
           <span class="hits">25</span>
           
           <code class="ruby">    if !time.blank? &amp;&amp; DateTime.now &gt; time</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="23">
+        <li class="covered" data-hits="2" data-linenumber="25">
           <span class="hits">2</span>
           
           <code class="ruby">      errors.add(:time, &quot;Please select a future time&quot;)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="24">
+        <li class="never" data-hits="" data-linenumber="26">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="25">
+        <li class="never" data-hits="" data-linenumber="27">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="26">
+        <li class="never" data-hits="" data-linenumber="28">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="27">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="29">
           
-          <code class="ruby">  def add_friends(friend_ids)</code>
+          
+          <code class="ruby">  # def venue_count</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="28">
-          <span class="hits">16</span>
+        <li class="never" data-hits="" data-linenumber="30">
           
-          <code class="ruby">    friend_ids.each do |id|</code>
-        </li>
-      
-        <li class="covered" data-hits="16" data-linenumber="29">
-          <span class="hits">16</span>
           
-          <code class="ruby">      if id.present?</code>
-        </li>
-      
-        <li class="covered" data-hits="16" data-linenumber="30">
-          <span class="hits">16</span>
-          
-          <code class="ruby">        friends &lt;&lt; Friend.find(id)</code>
+          <code class="ruby">  #   if options.count &lt; 2 || options.count &gt; 3</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="31">
           
           
-          <code class="ruby">      end</code>
+          <code class="ruby">  #     errors.add(:venues, &quot;Please select two to three venues&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="32">
           
           
-          <code class="ruby">    end</code>
+          <code class="ruby">  #   end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="33">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="34">
@@ -2829,97 +2859,97 @@
         <li class="covered" data-hits="1" data-linenumber="35">
           <span class="hits">1</span>
           
-          <code class="ruby">  def add_venues(venue_ids)</code>
+          <code class="ruby">  def add_friends(friend_ids)</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="36">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="16" data-linenumber="36">
+          <span class="hits">16</span>
           
-          <code class="ruby">    venue_ids.each do |id|</code>
+          <code class="ruby">    friend_ids.each do |id|</code>
         </li>
       
-        <li class="covered" data-hits="36" data-linenumber="37">
-          <span class="hits">36</span>
+        <li class="covered" data-hits="16" data-linenumber="37">
+          <span class="hits">16</span>
           
           <code class="ruby">      if id.present?</code>
         </li>
       
-        <li class="covered" data-hits="36" data-linenumber="38">
-          <span class="hits">36</span>
+        <li class="covered" data-hits="16" data-linenumber="38">
+          <span class="hits">16</span>
           
-          <code class="ruby">        option = Option.new</code>
+          <code class="ruby">        friends &lt;&lt; Friend.find(id)</code>
         </li>
       
-        <li class="covered" data-hits="36" data-linenumber="39">
-          <span class="hits">36</span>
-          
-          <code class="ruby">        option.venue_id = id</code>
-        </li>
-      
-        <li class="covered" data-hits="36" data-linenumber="40">
-          <span class="hits">36</span>
-          
-          <code class="ruby">        options &lt;&lt; option</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="41">
+        <li class="never" data-hits="" data-linenumber="39">
           
           
           <code class="ruby">      end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="42">
+        <li class="never" data-hits="" data-linenumber="40">
           
           
           <code class="ruby">    end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="43">
+        <li class="never" data-hits="" data-linenumber="41">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="44">
+        <li class="never" data-hits="" data-linenumber="42">
           
           
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="45">
+        <li class="covered" data-hits="1" data-linenumber="43">
           <span class="hits">1</span>
           
-          <code class="ruby">  def ranked_options</code>
+          <code class="ruby">  def add_venues(venue_ids)</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="46">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="18" data-linenumber="44">
+          <span class="hits">18</span>
           
-          <code class="ruby">    options.order(rank: :desc)</code>
+          <code class="ruby">    venue_ids.each do |id|</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="47">
+        <li class="covered" data-hits="36" data-linenumber="45">
+          <span class="hits">36</span>
           
-          
-          <code class="ruby">  end</code>
+          <code class="ruby">      if id.present?</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="48">
+        <li class="covered" data-hits="36" data-linenumber="46">
+          <span class="hits">36</span>
           
-          
-          <code class="ruby"></code>
+          <code class="ruby">        option = Option.new</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="49">
-          <span class="hits">1</span>
+        <li class="covered" data-hits="36" data-linenumber="47">
+          <span class="hits">36</span>
           
-          <code class="ruby">  def venues</code>
+          <code class="ruby">        option.venue_id = id</code>
         </li>
       
-        <li class="covered" data-hits="2" data-linenumber="50">
-          <span class="hits">2</span>
+        <li class="covered" data-hits="36" data-linenumber="48">
+          <span class="hits">36</span>
           
-          <code class="ruby">    ranked_options.map { |option| option.venue }</code>
+          <code class="ruby">        options &lt;&lt; option</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="49">
+          
+          
+          <code class="ruby">      end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="50">
+          
+          
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="51">
@@ -2937,13 +2967,13 @@
         <li class="covered" data-hits="1" data-linenumber="53">
           <span class="hits">1</span>
           
-          <code class="ruby">  def selected_venue</code>
+          <code class="ruby">  def ranked_options</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="54">
+        <li class="covered" data-hits="2" data-linenumber="54">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">    options.find_by(selected: true).venue</code>
+          <code class="ruby">    options.order(rank: :desc)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="55">
@@ -2961,34 +2991,82 @@
         <li class="covered" data-hits="1" data-linenumber="57">
           <span class="hits">1</span>
           
-          <code class="ruby">  def select_option(option_id)</code>
+          <code class="ruby">  def venues</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="58">
+        <li class="covered" data-hits="2" data-linenumber="58">
+          <span class="hits">2</span>
           
-          
-          <code class="ruby">    option = options.find(option_id)</code>
+          <code class="ruby">    ranked_options.map { |option| option.venue }</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="59">
-          
-          
-          <code class="ruby">    option.selected = true</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="60">
-          
-          
-          <code class="ruby">    option.save</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="61">
+        <li class="never" data-hits="" data-linenumber="59">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="62">
+        <li class="never" data-hits="" data-linenumber="60">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="61">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def selected_venue</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="62">
+          
+          
+          <code class="ruby">    options.find_by(selected: true).venue</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="63">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="64">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="covered" data-hits="1" data-linenumber="65">
+          <span class="hits">1</span>
+          
+          <code class="ruby">  def select_option(option_id)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="66">
+          
+          
+          <code class="ruby">    option = options.find(option_id)</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="67">
+          
+          
+          <code class="ruby">    option.selected = true</code>
+        </li>
+      
+        <li class="missed" data-hits="0" data-linenumber="68">
+          
+          
+          <code class="ruby">    option.save</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="69">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="70">
           
           
           <code class="ruby">end</code>
