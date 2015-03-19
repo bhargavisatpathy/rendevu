@@ -8,8 +8,9 @@ class Plan < ActiveRecord::Base
   validates :name, presence: true
   validates :time, presence: true
   validate  :future_time
+  validate  :venue_count
+
   validates :friends, length: { minimum: 1, message: "Please select atleast one friend"}
-  validates :options, length: { in: 2..3, message: "Please select two to three venues" }
 
   def init(user, friend_ids, venue_ids)
     self.user = user
@@ -21,6 +22,12 @@ class Plan < ActiveRecord::Base
   def future_time
     if !time.blank? && DateTime.now > time
       errors.add(:time, "Please select a future time")
+    end
+  end
+
+  def venue_count
+    if options.count < 2 || options.count > 3
+      errors.add(:venues, "Please select two to three venues")
     end
   end
 
