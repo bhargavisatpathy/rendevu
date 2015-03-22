@@ -1,4 +1,4 @@
-== Rendevu - Think, Plan & Hangout
+# Rendevu - Think, Plan & Hangout
 
 This is Bhargavi Satpathy's individual project for the third module at the Turing School of Software and Design.
 
